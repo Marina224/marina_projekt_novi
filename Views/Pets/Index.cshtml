@@ -1,0 +1,53 @@
+﻿@model IEnumerable<PIN_projekt.Models.Pets>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Moja lista ljubimaca</h1>
+
+<p>
+    <a asp-action="Create">Dodaj</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Ime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Starost)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Pasmina)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DatumDodavanja)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Starost)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Pasmina)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DatumDodavanja)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Uredi</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Detalji</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Izbriši</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
